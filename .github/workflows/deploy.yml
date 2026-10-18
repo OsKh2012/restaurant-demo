@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -22,12 +22,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant/package.json
 
       - name: Install dependencies
         working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
@@ -36,24 +38,24 @@ jobs:
       - name: Build
         working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
         env:
-          PORT: "4173"
           BASE_PATH: "/restaurant-demo/"
+          NODE_ENV: production
         run: npm run build
 
       - name: Verify build
         working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
         run: |
-          test -f dist/public/index.html
+          test -f dist/index.html
           echo "Built index.html successfully"
-          find dist/public -maxdepth 2 -type f | head -50
+          find dist -maxdepth 2 -type f | head -50
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant/dist/public
+          path: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
