@@ -170,32 +170,21 @@
 }
 
 
-/* Yemeni-inspired finish: warm clay, saffron, coffee, and subtle geometric architecture. */
-.font-arabic {
-  font-family: var(--app-font-arabic);
-  letter-spacing: 0;
-}
-
-.yemeni-hero::after {
+/* Subtle regional character: warm clay/coffee tones and a quiet geometric texture. */
+.heritage-hero::after {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 16px;
+  height: 8px;
   z-index: 20;
-  opacity: .32;
+  opacity: .13;
   pointer-events: none;
   background:
-    linear-gradient(135deg, transparent 0 9px, rgba(224, 183, 93, .9) 9px 11px, transparent 11px 20px) 0 0 / 28px 16px repeat-x,
-    linear-gradient(45deg, transparent 0 9px, rgba(224, 183, 93, .9) 9px 11px, transparent 11px 20px) 14px 0 / 28px 16px repeat-x;
+    linear-gradient(135deg, transparent 0 6px, rgba(172, 119, 67, .9) 6px 7px, transparent 7px 14px) 0 0 / 22px 8px repeat-x;
 }
 
-.yemeni-hero h1 {
+.heritage-hero h1 {
   text-shadow: 0 4px 26px rgba(0,0,0,.28);
-}
-
-.yemeni-hero [data-testid="hero-subtitle"] span {
-  font-family: var(--app-font-arabic), Inter, sans-serif;
-  letter-spacing: .04em;
 }
 
 #about {
@@ -206,28 +195,26 @@
 #about::before {
   content: "";
   position: absolute;
-  width: min(420px, 55vw);
-  height: min(420px, 55vw);
-  right: -180px;
-  top: 50px;
-  opacity: .045;
-  border-radius: 48% 52% 60% 40%;
+  width: min(360px, 45vw);
+  height: min(360px, 45vw);
+  right: -170px;
+  top: 70px;
+  opacity: .022;
   background:
-    radial-gradient(circle at center, transparent 0 34%, hsl(var(--primary)) 35% 36%, transparent 37% 47%, hsl(var(--primary)) 48% 49%, transparent 50%),
-    repeating-conic-gradient(from 0deg, hsl(var(--primary)) 0 7deg, transparent 7deg 15deg);
+    repeating-linear-gradient(45deg, hsl(var(--primary)) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(-45deg, hsl(var(--primary)) 0 1px, transparent 1px 18px);
+  transform: rotate(9deg);
   pointer-events: none;
 }
 
-.yemeni-hero .text-primary,
-#about .text-primary,
 #menu .text-primary {
   filter: saturate(.9);
 }
 
 @media (max-width: 640px) {
-  .yemeni-hero::after {
-    height: 11px;
-    background-size: 20px 11px, 20px 11px;
-    opacity: .25;
+  .heritage-hero::after {
+    height: 6px;
+    background-size: 17px 6px;
+    opacity: .10;
   }
 }
