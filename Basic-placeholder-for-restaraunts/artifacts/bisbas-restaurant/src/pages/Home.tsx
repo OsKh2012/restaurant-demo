@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, MapPin, Clock, ArrowRight, Instagram, Facebook, Utensils } from "lucide-react";
+import { Phone, MapPin, Clock, ArrowRight, Instagram, Facebook, Utensils, ShoppingBag, Plus, Minus, X, Star, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Yemeni-inspired imagery selected for the demo. Food photography is from Pexels
@@ -93,6 +93,25 @@ const DISHES = [
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState("starters");
+  const [cart, setCart] = useState<{ name: string; price: number; quantity: number }[]>([]);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [orderType, setOrderType] = useState<"pickup" | "delivery">("pickup");
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const cartTax = cartTotal * 0.0775;
+  const grandTotal = cartTotal + cartTax + (orderType === "delivery" && cart.length ? 4.99 : 0);
+  const addToCart = (item: { name: string; price: string }) => {
+    const price = Number(item.price.replace("$", ""));
+    setCart((current) => {
+      const existing = current.find((entry) => entry.name === item.name);
+      if (existing) return current.map((entry) => entry.name === item.name ? { ...entry, quantity: entry.quantity + 1 } : entry);
+      return [...current, { name: item.name, price, quantity: 1 }];
+    });
+    setCartOpen(true);
+  };
+  const changeQuantity = (name: string, delta: number) => setCart((current) => current.map((item) => item.name === name ? { ...item, quantity: item.quantity + delta } : item).filter((item) => item.quantity > 0));
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -518,6 +537,9 @@ export default function Home() {
                     <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`menu-item-desc-${i}`}>
                       {item.desc}
                     </p>
+                    <button onClick={() => addToCart(item)} className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-primary/30 px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-primary transition-all duration-200 hover:bg-primary hover:text-primary-foreground active:scale-95">
+                      <Plus className="h-3 w-3" /> Add to Order
+                    </button>
                   </div>
                 ))}
               </motion.div>
@@ -599,7 +621,7 @@ export default function Home() {
               style={{ fontSize: "clamp(0.875rem, 1.8vw, 1.05rem)" }}
               data-testid="order-desc"
             >
-              From mandi and haneeth to Adeni tea and bint al-sahn, bring the full Yemeni table to every order. Connect this button to your restaurant’s ordering service.
+              From mandi and haneeth to Adeni tea and bint al-sahn, bring the full Yemeni table to every order. Choose your favorites, add them to your order, and preview the complete checkout experience.
             </p>
 
             {/* Stat badges */}
@@ -623,16 +645,71 @@ export default function Home() {
               className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/85 rounded-full h-14 px-10 text-sm font-semibold tracking-wide shadow-2xl shadow-primary/35 hover:shadow-primary/55 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               data-testid="order-btn-sample"
             >
-              <a href="#menu">
-                Preview the Menu
+              <button onClick={() => setCartOpen(true)}>
+                <ShoppingBag className="w-4 h-4 mr-2.5 opacity-80" />
+                Start Your Order
                 <ArrowRight className="w-4 h-4 ml-2.5 opacity-70" />
-              </a>
+              </button>
             </Button>
 
           </div>
         </motion.div>
       </section>
 
+      {/* ── Reviews ─────────────────────────────────────────────────── */}
+      <section className="py-16 md:py-28 lg:py-36 bg-card/40">
+        <div className="container mx-auto px-5 sm:px-6 md:px-10 max-w-6xl">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={FADE_UP} className="text-center mb-10 md:mb-14">
+            <span className={EYEBROW}>Guest Favorites</span><div className={RULE} />
+            <h2 className="font-serif font-bold text-foreground" style={{ fontSize: "clamp(1.9rem, 5vw, 3.25rem)" }}>What Guests Say</h2>
+            <div className="mt-5 inline-flex items-center gap-3 rounded-full border border-primary/20 bg-background/70 px-5 py-2.5">
+              <div className="flex gap-0.5 text-primary">{[1,2,3,4,5].map((s) => <Star key={s} className="h-4 w-4 fill-current" />)}</div>
+              <span className="font-serif text-lg font-semibold">4.9</span><span className="text-xs uppercase tracking-[0.12em] text-muted-foreground">Demo rating</span>
+            </div>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7">
+            {["The rice was fragrant, the lamb was tender, and the whole meal felt made for sharing.","Beautiful atmosphere and a menu that makes it easy to discover Yemeni favorites.","The Adeni tea and bint al-sahn were the perfect way to finish the meal."].map((text, i) => (
+              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }} variants={FADE_UP} className="rounded-2xl border border-border/60 bg-background p-6 md:p-7 shadow-sm">
+                <div className="flex gap-0.5 text-primary mb-4">{[1,2,3,4,5].map((s) => <Star key={s} className="h-3.5 w-3.5 fill-current" />)}</div>
+                <p className="font-serif text-lg leading-relaxed text-foreground/85 mb-5">“{text}”</p>
+                <span className="text-[9px] uppercase tracking-[0.12em] text-muted-foreground">Sample guest review</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {cartOpen && (
+          <><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setCartOpen(false)} className="fixed inset-0 z-[70] bg-black/55 backdrop-blur-[2px]" />
+          <motion.aside initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} className="fixed right-0 top-0 z-[80] h-full w-full max-w-md bg-background shadow-2xl border-l border-border/60 flex flex-col">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-border/60"><div><span className={EYEBROW}>Online Ordering</span><h2 className="font-serif text-2xl font-bold">Your Order</h2></div><button onClick={() => setCartOpen(false)} className="h-10 w-10 rounded-full border border-border flex items-center justify-center"><X className="h-4 w-4" /></button></div>
+            <div className="flex-1 overflow-y-auto px-6 py-5 space-y-3">
+              {cart.length === 0 ? <div className="h-full flex flex-col items-center justify-center text-center"><ShoppingBag className="h-8 w-8 text-primary mb-4" /><h3 className="font-serif text-2xl font-bold">Your order is empty</h3><p className="text-sm text-muted-foreground mt-2">Add dishes from the menu to begin.</p></div> : cart.map((item) => (
+                <div key={item.name} className="rounded-2xl border border-border/60 bg-card/50 p-4"><div className="flex justify-between gap-4"><div><h3 className="font-serif font-bold">{item.name}</h3><p className="text-sm text-primary mt-1">${item.price.toFixed(2)} each</p></div><b>${(item.price * item.quantity).toFixed(2)}</b></div>
+                  <div className="mt-3 flex justify-end"><div className="flex items-center rounded-full border border-border"><button onClick={() => changeQuantity(item.name,-1)} className="h-9 w-9 flex items-center justify-center"><Minus className="h-3.5 w-3.5" /></button><span className="w-9 text-center text-sm">{item.quantity}</span><button onClick={() => changeQuantity(item.name,1)} className="h-9 w-9 flex items-center justify-center"><Plus className="h-3.5 w-3.5" /></button></div></div>
+                </div>
+              ))}
+            </div>
+            {cart.length > 0 && <div className="border-t border-border/60 px-6 py-5 bg-card/30">
+              <div className="grid grid-cols-2 gap-2 mb-5">{["pickup","delivery"].map((type) => <button key={type} onClick={() => setOrderType(type as "pickup" | "delivery")} className={orderType === type ? "rounded-xl border border-primary bg-primary/10 text-primary px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em]" : "rounded-xl border border-border text-muted-foreground px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em]"}>{type}</button>)}</div>
+              <div className="space-y-2 text-sm"><div className="flex justify-between"><span>Subtotal</span><span>${cartTotal.toFixed(2)}</span></div><div className="flex justify-between text-muted-foreground"><span>Estimated tax</span><span>${cartTax.toFixed(2)}</span></div>{orderType === "delivery" && <div className="flex justify-between text-muted-foreground"><span>Delivery</span><span>$4.99</span></div>}<div className="flex justify-between pt-3 border-t border-border/50 font-semibold"><span>Total</span><span className="font-serif text-primary text-lg">${grandTotal.toFixed(2)}</span></div></div>
+              <button onClick={() => { setCartOpen(false); setCheckoutOpen(true); }} className="mt-5 w-full h-13 rounded-full bg-primary text-primary-foreground font-semibold text-sm shadow-lg">Continue to Checkout <ArrowRight className="inline h-4 w-4 ml-1.5" /></button>
+            </div>}
+          </motion.aside></>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {checkoutOpen && <><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm" />
+          <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} className="fixed inset-0 z-[100] flex items-center justify-center p-4"><div className="relative w-full max-w-lg rounded-3xl border border-border/60 bg-background shadow-2xl p-6 md:p-8">
+            <button onClick={() => setCheckoutOpen(false)} className="absolute right-5 top-5 h-10 w-10 rounded-full border border-border flex items-center justify-center"><X className="h-4 w-4" /></button>
+            {!orderPlaced ? <><span className={EYEBROW}>Final Step</span><h2 className="font-serif text-3xl font-bold mb-2">Checkout</h2><p className="text-sm text-muted-foreground mb-6">Demo checkout — no payment is processed.</p>
+              <div className="space-y-4"><input className="w-full h-12 rounded-xl border border-input bg-background px-4 text-sm" placeholder="Your name" /><input className="w-full h-12 rounded-xl border border-input bg-background px-4 text-sm" placeholder="Phone number" />{orderType === "delivery" && <input className="w-full h-12 rounded-xl border border-input bg-background px-4 text-sm" placeholder="Delivery address" />}<div className="rounded-xl border border-border bg-card/40 p-4 text-sm text-muted-foreground">Demo payment · No card information is collected.</div></div>
+              <button onClick={() => setOrderPlaced(true)} className="mt-6 w-full h-14 rounded-full bg-primary text-primary-foreground font-semibold">Place Demo Order · ${grandTotal.toFixed(2)}</button>
+            </> : <div className="py-8 text-center"><CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" /><span className={EYEBROW}>Order Received</span><h2 className="font-serif text-3xl font-bold">Thank You</h2><p className="mt-3 text-sm text-muted-foreground">This is a demo confirmation. No payment was processed.</p><button onClick={() => { setCheckoutOpen(false); setOrderPlaced(false); setCart([]); }} className="mt-6 rounded-full bg-primary px-7 h-11 text-sm font-semibold text-primary-foreground">Back to Site</button></div>}
+          </div></motion.div></>}
+      </AnimatePresence>
       {/* ── Contact ──────────────────────────────────────────────────── */}
       <section id="contact" className="py-16 md:py-28 lg:py-40 bg-background">
         <div className="container mx-auto px-5 sm:px-6 md:px-10">
