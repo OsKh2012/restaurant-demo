@@ -15,8 +15,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +28,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -32,11 +36,11 @@ jobs:
           version: 10
           package_json_file: Basic-placeholder-for-restaraunts/package.json
 
-      - name: Install workspace dependencies
+      - name: Install only the restaurant workspace
         working-directory: ./Basic-placeholder-for-restaraunts
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --filter @workspace/bisbas-restaurant
 
-      - name: Build original React app
+      - name: Build the original React/Vite app
         working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
         env:
           NODE_ENV: production
@@ -44,11 +48,11 @@ jobs:
           BASE_PATH: "/restaurant-demo/"
         run: pnpm run build
 
-      - name: Verify original build
+      - name: Verify build
         working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
         run: |
           test -f dist/public/index.html
-          echo "Original React/Vite build succeeded."
+          echo "Original design built successfully."
           find dist/public -maxdepth 2 -type f | head -50
 
       - name: Setup Pages
