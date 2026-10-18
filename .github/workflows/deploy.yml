@@ -1,8 +1,9 @@
-name: Deploy restaurant demo
+name: Deploy original restaurant demo
 
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,20 +15,50 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          package_json_file: Basic-placeholder-for-restaraunts/package.json
+
+      - name: Install workspace dependencies
+        working-directory: ./Basic-placeholder-for-restaraunts
+        run: pnpm install --frozen-lockfile
+
+      - name: Build original React app
+        working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
+        env:
+          NODE_ENV: production
+          PORT: "4173"
+          BASE_PATH: "/restaurant-demo/"
+        run: pnpm run build
+
+      - name: Verify original build
+        working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
+        run: |
+          test -f dist/public/index.html
+          echo "Original React/Vite build succeeded."
+          find dist/public -maxdepth 2 -type f | head -50
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload static site
+
+      - name: Upload original build
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./site
+          path: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant/dist/public
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
