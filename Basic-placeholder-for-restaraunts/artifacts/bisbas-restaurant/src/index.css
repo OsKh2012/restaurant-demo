@@ -170,22 +170,22 @@
 }
 
 
-/* Quiet heritage details: warm plaster, clay, coffee and restrained geometric craft. */
+/* Subtle Yemeni-inspired visual language: Sana'a-style earth tones and geometric craft, kept understated. */
 .heritage-hero {
-  box-shadow: inset 0 -1px 0 rgba(120, 76, 46, .18);
+  box-shadow: inset 0 -2px 0 rgba(116, 72, 43, .24);
 }
 
 .heritage-hero::after {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 10px;
+  height: 14px;
   z-index: 20;
   pointer-events: none;
-  opacity: .20;
+  opacity: .30;
   background:
-    linear-gradient(45deg, transparent 0 8px, rgba(151, 96, 56, .8) 8px 9px, transparent 9px 17px) 0 0 / 24px 10px repeat-x,
-    linear-gradient(-45deg, transparent 0 8px, rgba(151, 96, 56, .8) 8px 9px, transparent 9px 17px) 12px 0 / 24px 10px repeat-x;
+    linear-gradient(135deg, transparent 0 7px, rgba(139, 86, 49, .95) 7px 9px, transparent 9px 16px) 0 0 / 28px 14px repeat-x,
+    linear-gradient(45deg, transparent 0 7px, rgba(139, 86, 49, .95) 7px 9px, transparent 9px 16px) 14px 0 / 28px 14px repeat-x;
 }
 
 #about,
@@ -198,33 +198,33 @@
 #menu::before {
   content: "";
   position: absolute;
-  width: 250px;
-  height: 250px;
-  border: 1px solid rgba(151, 96, 56, .09);
+  width: 310px;
+  height: 310px;
+  border: 1px solid rgba(139, 86, 49, .13);
   transform: rotate(45deg);
   pointer-events: none;
 }
 
 #about::after {
-  right: -145px;
-  top: 34%;
+  right: -175px;
+  top: 28%;
   box-shadow:
-    0 0 0 16px rgba(151, 96, 56, .025),
-    0 0 0 32px rgba(151, 96, 56, .02);
+    0 0 0 22px rgba(139, 86, 49, .035),
+    0 0 0 44px rgba(139, 86, 49, .025);
 }
 
 #menu::before {
-  left: -145px;
-  top: 24%;
+  left: -175px;
+  top: 18%;
   box-shadow:
-    0 0 0 16px rgba(151, 96, 56, .025),
-    0 0 0 32px rgba(151, 96, 56, .02);
+    0 0 0 22px rgba(139, 86, 49, .035),
+    0 0 0 44px rgba(139, 86, 49, .025);
 }
 
 @media (max-width: 640px) {
   .heritage-hero::after {
-    height: 7px;
-    background-size: 18px 7px, 18px 7px;
-    opacity: .16;
+    height: 9px;
+    background-size: 21px 9px, 21px 9px;
+    opacity: .24;
   }
 }
