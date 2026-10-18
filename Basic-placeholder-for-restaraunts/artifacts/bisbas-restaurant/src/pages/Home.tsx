@@ -160,7 +160,7 @@ export default function Home() {
       </nav>
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative h-[100svh] min-h-[600px] w-full overflow-hidden flex flex-col yemeni-hero">
+      <section className="relative h-[100svh] min-h-[600px] w-full overflow-hidden flex flex-col heritage-hero">
 
         <div className="absolute inset-0 z-0">
           <img
