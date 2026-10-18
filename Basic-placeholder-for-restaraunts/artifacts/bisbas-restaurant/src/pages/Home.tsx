@@ -12,13 +12,13 @@ const dish3 = "https://images.pexels.com/photos/27359375/pexels-photo-27359375.j
 const orderBg = "https://upload.wikimedia.org/wikipedia/commons/6/63/Houses_in_Sanaa%2C_Yemen_%2810205293626%29_%28edited%29.jpg";
 
 const DEMO_RESTAURANT = {
-  name: "Bisbas",
-  cuisine: "Yemeni Kitchen · San Diego",
-  tagline: "Fragrant mandi, slow-cooked meats, and the warmth of a Yemeni table.",
+  name: "Restaurant",
+  cuisine: "Neighborhood Kitchen · San Diego",
+  tagline: "Thoughtful food, warm hospitality, and a table made for sharing.",
   address: "San Diego, California",
-  phone: "(619) 555-0147",
-  phoneHref: "tel:+16195550147",
-  hours: [["Mon – Sun", "11am – 10pm"]],
+  phone: "1234567890",
+  phoneHref: "tel:1234567890",
+  hours: [["Mon – Sun", "11am – 9pm"]],
 };
 
 const FADE_UP = {
@@ -37,57 +37,57 @@ const RULE = "w-10 h-px bg-primary mb-6 mx-auto";
 const MENU_SECTIONS = [
   {
     id: "starters",
-    label: "Yemeni Starters",
+    label: "Starters",
     items: [
-      { name: "Sambosa", desc: "Crisp pastries filled with seasoned beef and aromatic spices.", price: "$9" },
-      { name: "Shafout", desc: "Cool, tangy Yemeni bread layered with herbed yogurt and fresh greens.", price: "$10" },
-      { name: "Mutabbaq", desc: "Golden folded pastry with a savory spiced filling.", price: "$11" },
-      { name: "Sahawiq & Bread", desc: "Fresh chopped chili-tomato sauce served with warm bread.", price: "$7" },
+      { name: "Crispy Pastries", desc: "Golden pastries filled with seasoned meat and aromatic spices.", price: "$9" },
+      { name: "Fresh Herb Dip", desc: "Cool, creamy dip finished with herbs and a touch of chili.", price: "$8" },
+      { name: "Grilled Flatbread", desc: "Warm bread served with a bright tomato and herb relish.", price: "$7" },
+      { name: "Seasoned Bites", desc: "Savory, slow-cooked pieces with a fragrant spice blend.", price: "$11" },
     ]
   },
   {
     id: "mains",
-    label: "Mandi & Mains",
+    label: "Signature Plates",
     items: [
-      { name: "Lamb Mandi", desc: "Slow-roasted lamb over fragrant basmati rice with Yemeni spices.", price: "$28" },
-      { name: "Chicken Mandi", desc: "Tender roasted chicken served over saffron-tinted mandi rice.", price: "$22" },
-      { name: "Haneeth", desc: "Fall-apart slow-cooked lamb with rich spices and rice.", price: "$29" },
-      { name: "Fahsa", desc: "Yemeni-style shredded beef stew finished with fenugreek and herbs.", price: "$20" },
+      { name: "Slow-Roasted Lamb", desc: "Tender lamb served over fragrant long-grain rice.", price: "$28" },
+      { name: "Roasted Chicken", desc: "Juicy roasted chicken with warmly spiced rice and fresh herbs.", price: "$22" },
+      { name: "Braised Beef", desc: "Slow-cooked beef with rich spices and a silky, savory sauce.", price: "$26" },
+      { name: "Grilled Fish", desc: "Fresh fish grilled with citrus, herbs, and aromatic seasoning.", price: "$24" },
     ]
   },
   {
     id: "sides",
     label: "Sides",
     items: [
-      { name: "Saltah", desc: "A bubbling Yemeni stew finished tableside with fenugreek foam.", price: "$12" },
-      { name: "Sahawiq", desc: "Fresh Yemeni tomato, chili, cilantro, and lime relish.", price: "$5" },
-      { name: "Mandi Rice", desc: "Fragrant long-grain rice with warm Yemeni spices.", price: "$7" },
+      { name: "Fragrant Rice", desc: "Long-grain rice scented with warm spices.", price: "$7" },
+      { name: "Fresh Relish", desc: "Tomato, herbs, chili, and lime served fresh.", price: "$5" },
+      { name: "Warm Bread", desc: "Freshly warmed bread for the table.", price: "$4" },
     ]
   },
   {
     id: "desserts",
     label: "Desserts",
     items: [
-      { name: "Bint Al-Sahn", desc: "Honey-glazed Yemeni bread topped with sesame and nigella.", price: "$9" },
-      { name: "Masoub", desc: "Warm layered bread with banana, cream, and honey.", price: "$10" },
-      { name: "Honey & Cream", desc: "A simple Yemeni-inspired sweet finish.", price: "$7" },
+      { name: "Honey Cake", desc: "Soft golden cake finished with honey and sesame.", price: "$9" },
+      { name: "Warm Bread Pudding", desc: "Comforting baked dessert with cream and honey.", price: "$10" },
+      { name: "Cream & Honey", desc: "A simple sweet finish with toasted sesame.", price: "$7" },
     ]
   },
   {
     id: "drinks",
     label: "Tea & Drinks",
     items: [
-      { name: "Adeni Tea", desc: "Black tea simmered with milk and warming spices.", price: "$5" },
-      { name: "Yemeni Coffee", desc: "Dark, spiced coffee inspired by traditional Yemeni brewing.", price: "$5" },
+      { name: "Spiced Milk Tea", desc: "Black tea simmered with milk and warming spices.", price: "$5" },
+      { name: "House Coffee", desc: "Rich coffee with a subtle aromatic spice blend.", price: "$5" },
       { name: "Mint Tea", desc: "Fresh mint and black tea served hot.", price: "$4" },
     ]
   },
 ];
 
 const DISHES = [
-  { img: dish1, name: "Lamb Mandi", desc: "Slow-roasted lamb layered over fragrant Yemeni-style rice." },
-  { img: dish2, name: "Chicken Mandi", desc: "Tender roasted chicken with saffron-tinted rice and fresh accompaniments." },
-  { img: dish3, name: "Haneeth", desc: "Slow-cooked lamb with rich spices, herbs, and the flavors of Hadhramaut." },
+  { img: dish1, name: "Slow-Roasted Lamb", desc: "Tender lamb layered over fragrant rice and fresh accompaniments." },
+  { img: dish2, name: "Roasted Chicken", desc: "Juicy roasted chicken with aromatic rice and house spices." },
+  { img: dish3, name: "Braised Beef", desc: "Slow-cooked beef with herbs, spices, and a rich savory sauce." },
 ];
 
 export default function Home() {
@@ -186,42 +186,6 @@ export default function Home() {
         <div className="relative z-10 flex-1 flex items-center">
           <div className="w-full px-5 sm:px-8 md:px-16 lg:px-24">
             <div className="max-w-xl lg:max-w-2xl mx-auto md:mx-0">
-
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.15 } } }}
-                className="text-center md:text-left"
-              >
-                {/* Eyebrow */}
-                <motion.div
-                  variants={{ hidden: { opacity: 0, x: -16 }, visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22,1,0.36,1] } } }}
-                  className="flex items-center justify-center md:justify-start gap-4 mb-6 md:mb-8"
-                  data-testid="hero-subtitle"
-                >
-                  <div className="w-6 md:w-8 h-px bg-primary" />
-                  <span className="text-primary text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.28em] font-sans">
-                    {DEMO_RESTAURANT.cuisine}
-                  </span>
-                </motion.div>
-
-                {/* Title */}
-                <motion.h1
-                  variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22,1,0.36,1] } } }}
-                  className="font-serif font-bold text-white leading-[0.9] tracking-tight mb-2"
-                  style={{ fontSize: "clamp(3.75rem, 14vw, 9rem)" }}
-                  data-testid="hero-title"
-                >
-                  {DEMO_RESTAURANT.name}
-                </motion.h1>
-                <motion.div
-                  variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.08 } } }}
-                  className="font-arabic text-primary/90 text-2xl md:text-3xl mb-5"
-                  dir="rtl"
-                  lang="ar"
-                >
-                  مَطْعَم يَمَنِي أَصِيل
-                </motion.div>
                 <motion.div
                   variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22,1,0.36,1] } } }}
                   className="flex items-baseline justify-center md:justify-start gap-4 md:gap-5 mb-6 md:mb-8"
@@ -341,24 +305,24 @@ export default function Home() {
             variants={FADE_UP}
             className="max-w-2xl mx-auto text-center"
           >
-            <span className={EYEBROW}>Our Kitchen</span>
+            <span className={EYEBROW}>Our Story</span>
             <div className={RULE} />
             <h2
               className="font-serif font-bold text-foreground mb-6 md:mb-8 leading-tight"
               style={{ fontSize: "clamp(1.9rem, 5vw, 3.25rem)" }}
               data-testid="about-title"
             >
-              A Taste of Yemen<br />
-              <em className="not-italic text-primary/80">Made for Sharing</em>
+              A Table Waiting<br />
+              <em className="not-italic text-primary/80">For You</em>
             </h2>
             <p
               className="text-muted-foreground leading-[1.85] font-light"
               style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.125rem)" }}
               data-testid="about-text"
             >
-              {DEMO_RESTAURANT.name} is a sample Yemeni restaurant concept built around generous plates, bold spices, and genuine
-              hospitality. Inspired by the flavors of Yemen, every meal is meant to be shared, lingered over,
-              and enjoyed together.
+              {DEMO_RESTAURANT.name} is a sample neighborhood restaurant built around good food and genuine
+              hospitality. From the first bite to the last, every detail is an invitation to slow down,
+              gather around the table, and enjoy something made with care.
             </p>
           </motion.div>
         </div>
@@ -374,14 +338,14 @@ export default function Home() {
             variants={FADE_UP}
             className="text-center mb-10 md:mb-16 lg:mb-20"
           >
-            <span className={EYEBROW}>Yemeni Favorites</span>
+            <span className={EYEBROW}>House Favorites</span>
             <div className={RULE} />
             <h2
               className="font-serif font-bold text-foreground"
               style={{ fontSize: "clamp(1.9rem, 5vw, 3.25rem)" }}
               data-testid="featured-title"
             >
-              From Yemen to Your Table
+              From Our Kitchen
             </h2>
           </motion.div>
 
@@ -599,7 +563,7 @@ export default function Home() {
               style={{ fontSize: "clamp(0.875rem, 1.8vw, 1.05rem)" }}
               data-testid="order-desc"
             >
-              From mandi and haneeth to Adeni tea and bint al-sahn, bring the full Yemeni table to every order. Connect this button to your restaurant’s ordering service.
+              Use this section to highlight online ordering, pickup, delivery, or reservations. Connect the button to your restaurant’s ordering service.
             </p>
 
             {/* Stat badges */}
@@ -767,7 +731,7 @@ export default function Home() {
                 {DEMO_RESTAURANT.name}
               </h2>
               <p className="text-white/40 text-sm leading-relaxed font-light mb-5" data-testid="footer-text">
-                A modern Yemeni restaurant website concept. Replace the photos, menu, details, and links with your own.
+                A modern restaurant website concept. Replace the photos, menu, details, and links with your own.
               </p>
               {/* Social icons */}
               <div className="flex items-center gap-3 text-white/45" aria-label="Sample social media links">
@@ -811,7 +775,7 @@ export default function Home() {
                 href="#menu"
                 className="flex items-center gap-2 text-white/35 hover:text-primary text-xs font-light tracking-wide transition-colors"
               >
-                <ArrowRight className="w-3 h-3" /> Preview Yemeni menu
+                <ArrowRight className="w-3 h-3" /> Preview sample menu
               </a>
             </div>
           </div>
@@ -820,12 +784,12 @@ export default function Home() {
             className="flex flex-col md:flex-row justify-between items-start md:items-center gap-1.5 text-xs text-white/25 font-light tracking-wide"
             data-testid="footer-copyright"
           >
-            <span>© {new Date().getFullYear()} {DEMO_RESTAURANT.name} · Yemeni restaurant website demo</span>
+            <span>© {new Date().getFullYear()} {DEMO_RESTAURANT.name} · Restaurant website demo</span>
             <span>{DEMO_RESTAURANT.address}</span>
           </div>
         </div>
       <div className="text-center text-[10px] text-white/25 mt-5 px-5">
-        Sana'a architecture photo: Rod Waddington · CC BY-SA 2.0
+        Demo photography and visual styling
       </div>
       </footer>
 
