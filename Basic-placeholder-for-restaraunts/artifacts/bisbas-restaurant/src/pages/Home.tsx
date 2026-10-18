@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MapPin, Clock, ArrowRight, Instagram, Facebook, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const heroBg = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2200&q=88";
+import heroBg from "@assets/generated_images/restaurant-demo-hero.jpg";
 // Public Unsplash stock photos, saved locally so the demo does not rely on hotlinks.
-const dish1 = "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=88";
-const dish2 = "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=88";
-const dish3 = "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=88";
-const orderBg = "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2200&q=88";
+import dish1 from "@assets/restaurant-stock/stock-dish-1.jpg";
+import dish2 from "@assets/restaurant-stock/stock-dish-2.jpg";
+import dish3 from "@assets/restaurant-stock/stock-dish-3.jpg";
+import orderBg from "@assets/generated_images/restaurant-demo-order.jpg";
 
 const DEMO_RESTAURANT = {
   name: "Restaurant",
