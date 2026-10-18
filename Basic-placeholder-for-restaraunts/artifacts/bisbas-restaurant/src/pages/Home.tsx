@@ -668,7 +668,7 @@ export default function Home() {
             </div>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7">
-            {["The rice was fragrant, the lamb was tender, and the whole meal felt made for sharing.","Beautiful atmosphere and a menu that makes it easy to discover Yemeni favorites.","The Adeni tea and bint al-sahn were the perfect way to finish the meal."].map((text, i) => (
+            {["The service was welcoming, attentive, and made the whole visit feel comfortable.","Such a warm atmosphere — it feels like a place you can actually relax and spend time with family.","Everything was organized, the staff were friendly, and the experience from start to finish was excellent."].map((text, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }} variants={FADE_UP} className="rounded-2xl border border-border/60 bg-background p-6 md:p-7 shadow-sm">
                 <div className="flex gap-0.5 text-primary mb-4">{[1,2,3,4,5].map((s) => <Star key={s} className="h-3.5 w-3.5 fill-current" />)}</div>
                 <p className="font-serif text-lg leading-relaxed text-foreground/85 mb-5">“{text}”</p>
