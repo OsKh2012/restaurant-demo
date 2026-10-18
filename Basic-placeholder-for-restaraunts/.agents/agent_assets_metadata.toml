@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ufesTkyRwYn4B5RbfK-xy"
+uri = "file://artifacts/bisbas-restaurant/src/assets/hero-bg.png"
+type = "image"
+title = "Warm candlelit dining room"
+
+[[generated]]
+id = "6zJa1m6JS9iviDi-B8j9k"
+uri = "file://artifacts/bisbas-restaurant/src/assets/dish-1.png"
+type = "image"
+title = "Shawarma platter rustic plating"
+
+[[generated]]
+id = "GazDFyJlV-KwOTs8sC1ag"
+uri = "file://artifacts/bisbas-restaurant/src/assets/dish-2.png"
+type = "image"
+title = "Grilled lamb chops macro"
+
+[[generated]]
+id = "xibuvsopvbN-1_NT5dDAd"
+uri = "file://artifacts/bisbas-restaurant/src/assets/dish-3.png"
+type = "image"
+title = "Baklava with pistachios and honey"

@@ -1,0 +1,124 @@
+Build a complete, professional, mobile-first website for a real café called “Humble Bean Cafe” in San Diego.
+
+This is a production-quality demo meant to impress a real business owner.
+
+----------------------------------
+
+CORE GOAL:
+Create a modern restaurant/café website that increases customers by:
+- making menu easy to view
+- improving mobile experience
+- increasing calls and visits
+- promoting online ordering links
+
+----------------------------------
+
+TECH STACK:
+- HTML
+- CSS
+- JavaScript (no backend required)
+
+----------------------------------
+
+IMPORTANT DATA HANDLING RULE:
+Do NOT assume real business data.
+Instead, use placeholders that can be replaced manually later:
+- [PHONE_NUMBER]
+- [ADDRESS]
+- [HOURS]
+- [MENU_ITEMS]
+- [INSTAGRAM_LINK]
+- [DOORDASH_LINK]
+
+----------------------------------
+
+FEATURES TO BUILD:
+
+1. HERO SECTION
+- Café name: Humble Bean Cafe
+- Subtitle describing café vibe
+- Buttons:
+  - Call Now (tel link placeholder)
+  - Order Online (DoorDash placeholder link)
+  - View Menu (scroll)
+
+----------------------------------
+
+2. AUTO SOCIAL SECTION (IMPORTANT)
+Create a section called “Connect With Us” that includes:
+- Instagram button (placeholder link)
+- TikTok button (placeholder link if exists)
+- Google Maps button (placeholder)
+Make it visually modern with icons
+
+----------------------------------
+
+3. MENU SECTION
+- Clean grid layout
+- 6–10 items max
+- Each item:
+  - name
+  - description
+  - price
+- Use placeholder data but structured clearly
+
+----------------------------------
+
+4. IMAGE SYSTEM (IMPORTANT)
+Do NOT scrape the web automatically.
+
+Instead:
+- Use an “image URL slot system” like:
+  - [IMAGE_1]
+  - [IMAGE_2]
+- Add comments explaining where to paste real café photos or Unsplash links
+
+----------------------------------
+
+5. ORDER ONLINE SECTION
+- Big button linking to DoorDash placeholder
+- Add secondary “Call Order” button
+- Make it highly visible and conversion-focused
+
+----------------------------------
+
+6. ABOUT SECTION
+- Short professional description of café
+- Warm, community-focused tone
+
+----------------------------------
+
+7. CONTACT SECTION
+- Phone (click-to-call)
+- Address
+- Hours
+- Embedded Google Map (placeholder link allowed)
+
+----------------------------------
+
+8. DESIGN STYLE
+- Modern café aesthetic
+- warm tones (cream, brown, coffee colors)
+- elegant typography (Playfair + Inter)
+- soft shadows
+- smooth hover animations
+- mobile-first responsive design
+
+----------------------------------
+
+9. SOCIAL MEDIA INTEGRATION (STATIC ONLY)
+- Add icons/buttons for:
+  Instagram
+  Google Maps
+  DoorDash
+- No login systems, no backend
+
+----------------------------------
+
+10. PERFORMANCE GOAL
+The site should feel like a real premium café website that a business owner would actually want to use.
+
+----------------------------------
+
+IMPORTANT FINAL RULE:
+Keep everything editable and structured so real business data can be swapped in within minutes.

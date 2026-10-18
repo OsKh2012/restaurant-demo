@@ -1,0 +1,88 @@
+Build a premium, mobile-first restaurant website for “Bisbas Restaurant” in San Diego.
+
+This should look like a real, high-end website that could be sold to a local business for $500–$1000.
+
+Use clean HTML, CSS, and JavaScript in separate files (index.html, styles.css, script.js).
+
+----------------------------------
+
+DESIGN STYLE:
+- Modern, elegant, and warm restaurant aesthetic
+- Cream, brown, and gold color palette
+- Playfair Display for headings, Inter for body text
+- Strong spacing, hierarchy, and visual balance
+- Soft shadows, rounded corners, smooth UI
+
+----------------------------------
+
+HERO SECTION:
+- Full-screen background image (food/restaurant)
+- Dark overlay for readability
+- Title: “Bisbas Restaurant”
+- Tagline about fresh food and hospitality
+- Buttons:
+  - Call Now (click-to-call)
+  - Get Directions (Google Maps)
+  - Order Online (important CTA)
+
+----------------------------------
+
+ORDER ONLINE SECTION (IMPORTANT):
+- Create a clear, visually strong section called “Order Online”
+- Include a prominent button:
+  - “Order on DoorDash”
+  - Link should be a placeholder or real DoorDash link if available
+- Make it feel like a premium feature, not just a link
+- Optional: small supporting text like “Fast delivery through our partners”
+
+----------------------------------
+
+MENU SECTION:
+- 4–6 menu items
+- Clean cards with:
+  - name
+  - description
+  - price
+- Add hover effects and spacing
+
+----------------------------------
+
+FEATURED DISHES:
+- Image cards with food photos
+- Short descriptions
+- Smooth hover animation
+
+----------------------------------
+
+ABOUT SECTION:
+- Short paragraph about restaurant values (fresh, local, quality)
+
+----------------------------------
+
+CONTACT SECTION:
+- Click-to-call phone number
+- Address in San Diego
+- Business hours
+- Google Maps embed
+- “Get Directions” button
+
+----------------------------------
+
+UX / INTERACTION:
+- Mobile-first responsive design
+- Sticky “Call Now” button on mobile
+- Smooth hover effects on all cards and buttons
+- Subtle fade-in or slide-in animations on scroll
+
+----------------------------------
+
+CODE QUALITY:
+- Clean, organized HTML/CSS/JS
+- Use CSS variables for theme colors
+- No backend or login systems
+- Fast loading and simple structure
+
+----------------------------------
+
+GOAL:
+This should feel like a real modern restaurant website that immediately impresses a business owner and makes them interested in hiring the developer.
