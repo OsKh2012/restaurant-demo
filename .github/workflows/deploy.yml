@@ -22,18 +22,16 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant/package.json
 
       - name: Install dependencies
         working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
-        run: npm install
+        run: npm install --no-audit --no-fund
 
       - name: Build
         working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
