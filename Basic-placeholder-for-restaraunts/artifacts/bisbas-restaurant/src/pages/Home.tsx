@@ -3,19 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MapPin, Clock, ArrowRight, Instagram, Facebook, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Yemeni-inspired imagery selected for the demo. Food photography is from Pexels
-// (free-to-use); the Sana'a architecture image is from Wikimedia Commons (CC BY-SA 2.0).
-const heroBg = "https://images.pexels.com/photos/17139829/pexels-photo-17139829.jpeg?auto=compress&cs=tinysrgb&w=1800";
-const dish1 = "https://images.pexels.com/photos/17650195/pexels-photo-17650195.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const dish2 = "https://images.pexels.com/photos/7426867/pexels-photo-7426867.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const dish3 = "https://images.pexels.com/photos/27359375/pexels-photo-27359375.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const orderBg = "https://upload.wikimedia.org/wikipedia/commons/6/63/Houses_in_Sanaa%2C_Yemen_%2810205293626%29_%28edited%29.jpg";
+import heroBg from "@assets/generated_images/restaurant-demo-hero.jpg";
+// Public Unsplash stock photos, saved locally so the demo does not rely on hotlinks.
+import dish1 from "@assets/restaurant-stock/stock-dish-1.jpg";
+import dish2 from "@assets/restaurant-stock/stock-dish-2.jpg";
+import dish3 from "@assets/restaurant-stock/stock-dish-3.jpg";
+import orderBg from "@assets/generated_images/restaurant-demo-order.jpg";
 
 const DEMO_RESTAURANT = {
   name: "Restaurant",
-  cuisine: "Neighborhood Kitchen · San Diego",
-  tagline: "Thoughtful food, warm hospitality, and a table made for sharing.",
-  address: "San Diego, California",
+  cuisine: "Neighborhood Kitchen · Your City",
+  tagline: "Thoughtful food, warm hospitality, and a seat saved just for you.",
+  address: "Address",
   phone: "1234567890",
   phoneHref: "tel:1234567890",
   hours: [["Mon – Sun", "11am – 9pm"]],
@@ -40,18 +39,18 @@ const MENU_SECTIONS = [
     label: "Starters",
     items: [
       { name: "Crispy Pastries", desc: "Golden pastries filled with seasoned meat and aromatic spices.", price: "$9" },
-      { name: "Fresh Herb Dip", desc: "Cool, creamy dip finished with herbs and a touch of chili.", price: "$8" },
+      { name: "Fresh Herb Dip", desc: "Cool, creamy dip with herbs and a touch of chili.", price: "$8" },
       { name: "Grilled Flatbread", desc: "Warm bread served with a bright tomato and herb relish.", price: "$7" },
-      { name: "Seasoned Bites", desc: "Savory, slow-cooked pieces with a fragrant spice blend.", price: "$11" },
+      { name: "Seasoned Bites", desc: "Savory pieces with a fragrant house spice blend.", price: "$11" },
     ]
   },
   {
     id: "mains",
-    label: "Signature Plates",
+    label: "Main Courses",
     items: [
       { name: "Slow-Roasted Lamb", desc: "Tender lamb served over fragrant long-grain rice.", price: "$28" },
-      { name: "Roasted Chicken", desc: "Juicy roasted chicken with warmly spiced rice and fresh herbs.", price: "$22" },
-      { name: "Braised Beef", desc: "Slow-cooked beef with rich spices and a silky, savory sauce.", price: "$26" },
+      { name: "Roasted Chicken", desc: "Juicy roasted chicken with warmly spiced rice and herbs.", price: "$22" },
+      { name: "Braised Beef", desc: "Slow-cooked beef with rich spices and a savory sauce.", price: "$26" },
       { name: "Grilled Fish", desc: "Fresh fish grilled with citrus, herbs, and aromatic seasoning.", price: "$24" },
     ]
   },
@@ -75,7 +74,7 @@ const MENU_SECTIONS = [
   },
   {
     id: "drinks",
-    label: "Tea & Drinks",
+    label: "Drinks",
     items: [
       { name: "Spiced Milk Tea", desc: "Black tea simmered with milk and warming spices.", price: "$5" },
       { name: "House Coffee", desc: "Rich coffee with a subtle aromatic spice blend.", price: "$5" },
@@ -186,6 +185,34 @@ export default function Home() {
         <div className="relative z-10 flex-1 flex items-center">
           <div className="w-full px-5 sm:px-8 md:px-16 lg:px-24">
             <div className="max-w-xl lg:max-w-2xl mx-auto md:mx-0">
+
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.15 } } }}
+                className="text-center md:text-left"
+              >
+                {/* Eyebrow */}
+                <motion.div
+                  variants={{ hidden: { opacity: 0, x: -16 }, visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22,1,0.36,1] } } }}
+                  className="flex items-center justify-center md:justify-start gap-4 mb-6 md:mb-8"
+                  data-testid="hero-subtitle"
+                >
+                  <div className="w-6 md:w-8 h-px bg-primary" />
+                  <span className="text-primary text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.28em] font-sans">
+                    {DEMO_RESTAURANT.cuisine}
+                  </span>
+                </motion.div>
+
+                {/* Title */}
+                <motion.h1
+                  variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22,1,0.36,1] } } }}
+                  className="font-serif font-bold text-white leading-[0.9] tracking-tight mb-2"
+                  style={{ fontSize: "clamp(3.75rem, 14vw, 9rem)" }}
+                  data-testid="hero-title"
+                >
+                  {DEMO_RESTAURANT.name}
+                </motion.h1>
                 <motion.div
                   variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22,1,0.36,1] } } }}
                   className="flex items-baseline justify-center md:justify-start gap-4 md:gap-5 mb-6 md:mb-8"
@@ -338,7 +365,7 @@ export default function Home() {
             variants={FADE_UP}
             className="text-center mb-10 md:mb-16 lg:mb-20"
           >
-            <span className={EYEBROW}>House Favorites</span>
+            <span className={EYEBROW}>Sample Favorites</span>
             <div className={RULE} />
             <h2
               className="font-serif font-bold text-foreground"
@@ -731,7 +758,7 @@ export default function Home() {
                 {DEMO_RESTAURANT.name}
               </h2>
               <p className="text-white/40 text-sm leading-relaxed font-light mb-5" data-testid="footer-text">
-                A modern restaurant website concept. Replace the photos, menu, details, and links with your own.
+                A sample restaurant website. Replace the photos, menu, details, and links with your own.
               </p>
               {/* Social icons */}
               <div className="flex items-center gap-3 text-white/45" aria-label="Sample social media links">
@@ -788,9 +815,6 @@ export default function Home() {
             <span>{DEMO_RESTAURANT.address}</span>
           </div>
         </div>
-      <div className="text-center text-[10px] text-white/25 mt-5 px-5">
-        Demo photography and visual styling
-      </div>
       </footer>
 
       {/* ── Sticky Mobile CTA — above safe-area ──────────────────────── */}
