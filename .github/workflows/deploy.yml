@@ -16,6 +16,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -37,6 +40,13 @@ jobs:
           BASE_PATH: "/restaurant-demo/"
         run: npm run build
 
+      - name: Verify build
+        working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
+        run: |
+          test -f dist/public/index.html
+          echo "Built index.html successfully"
+          find dist/public -maxdepth 2 -type f | head -50
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -46,4 +56,5 @@ jobs:
           path: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant/dist/public
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
