@@ -19,42 +19,15 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
-        run: npm install --no-audit --no-fund
-
-      - name: Build
-        working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
-        env:
-          BASE_PATH: "/restaurant-demo/"
-          NODE_ENV: production
-        run: npm run build
-
-      - name: Verify build
-        working-directory: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant
-        run: |
-          test -f dist/index.html
-          echo "Built index.html successfully"
-          find dist -maxdepth 2 -type f | head -50
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      - name: Upload site
+      - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./Basic-placeholder-for-restaraunts/artifacts/bisbas-restaurant/dist
-
+          path: ./site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
